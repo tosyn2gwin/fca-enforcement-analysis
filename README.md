@@ -9,9 +9,11 @@ Scraped from the FCA's annual fines pages
 (`fca.org.uk/news/news-stories/<year>-fines`), 2016-2026.
 
 ## How to run
+```
 py fetch.py # downloads each year's page into raw/
 py parse.py # parses the pages and builds fines.db
 py query.py # runs a query against the database
+```
 
 ## Files
 - `fetch.py` - downloads the annual fines pages
