@@ -4,10 +4,9 @@ conn = sqlite3.connect("fines.db")
 cur = conn.cursor()
 
 cur.execute("""
-SELECT name, amount_gbp, date_iso
+SELECT year, name, date_raw, amount_raw
 FROM fines
-ORDER BY amount_gbp DESC
-LIMIT 10
+WHERE amount_gbp IS NULL OR date_iso IS NULL
 """)
 
 for row in cur.fetchall():

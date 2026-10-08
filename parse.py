@@ -15,11 +15,12 @@ def clean_amount(text):
 
 
 def clean_date(text):
-    try:
-        return datetime.strptime(text, "%d/%m/%Y").date().isoformat()
-    except ValueError:
-        return None
-
+    for pattern in ("%d/%m/%Y", "%d/%m/%y"):
+        try:
+            return datetime.strptime(text, pattern).date().isoformat()
+        except ValueError:
+            continue
+    return None
 
 def parse_year(year):
     with open(f"raw/{year}.html", encoding="utf-8") as f:
